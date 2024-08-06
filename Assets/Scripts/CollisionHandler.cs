@@ -4,20 +4,32 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] private float levelLoadDelay;
+    [SerializeField] private AudioClip crashSound;
+    [SerializeField] private AudioClip finishSound;
+
+    AudioSource audioSource;
+    bool isTransitioning = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        if (isTransitioning) return;
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 Debug.Log("This thing is friendly");
                 break;
             case "Finish":
-                //Debug.Log("You've finished the level!");
+                isTransitioning = true;
                 Finish();
                 break;       
             default:
-                //Debug.Log("This thing is not friendly");
-                //ReloadLevel();
+                isTransitioning = true;
                 Crash();
                 break;
         }
@@ -28,6 +40,10 @@ public class CollisionHandler : MonoBehaviour
         // disable player controls
         GetComponent<Movement>().enabled = false;
         
+        // play crash sound
+        audioSource.Stop();
+        audioSource.PlayOneShot(crashSound);
+
         // reload level
         Invoke("ReloadLevel", levelLoadDelay);
     }
@@ -36,6 +52,10 @@ public class CollisionHandler : MonoBehaviour
     {
         // disable player controls
         GetComponent<Movement>().enabled = false;
+
+        // play finish sound
+        audioSource.Stop();
+        audioSource.PlayOneShot(finishSound);
         
         // load next level
         Invoke("NextLevel", levelLoadDelay);

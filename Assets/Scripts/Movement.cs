@@ -30,27 +30,42 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            if (!thrustParticlesRight.isPlaying)
-            {
-                thrustParticlesRight.Play();
-            }
-
-            ApplyRotation(rotationSpeed);
+            RotateLeft();
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            if (!thrustParticlesLeft.isPlaying) 
-            {
-                thrustParticlesLeft.Play();            
-            }
-        
-            ApplyRotation(-rotationSpeed);
+            RotateRight();
         }
         else
         {
-            thrustParticlesRight.Stop();
-            thrustParticlesLeft.Stop();
+            StopRotation();
         }
+    }
+
+    private void RotateLeft()
+    {
+        if (!thrustParticlesRight.isPlaying)
+        {
+            thrustParticlesRight.Play();
+        }
+
+        ApplyRotation(rotationSpeed);
+    }
+
+    private void RotateRight()
+    {
+        if (!thrustParticlesLeft.isPlaying)
+        {
+            thrustParticlesLeft.Play();
+        }
+
+        ApplyRotation(-rotationSpeed);
+    }
+
+    private void StopRotation()
+    {
+        thrustParticlesRight.Stop();
+        thrustParticlesLeft.Stop();
     }
 
     private void ApplyRotation(float speed)
@@ -64,22 +79,32 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(thrustSound);
-            }
-
-            if (!thrustParticlesCenter.isPlaying)
-            {
-                thrustParticlesCenter.Play();
-            }
-
-            rb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
+            StartThrusting();
         }
         else
         {
-            thrustParticlesCenter.Stop();
-            audioSource.Stop();
+            StopThrusting();
         }
+    }
+
+    private void StartThrusting()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(thrustSound);
+        }
+
+        if (!thrustParticlesCenter.isPlaying)
+        {
+            thrustParticlesCenter.Play();
+        }
+
+        rb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
+    }
+
+    private void StopThrusting()
+    {
+        thrustParticlesCenter.Stop();
+        audioSource.Stop();
     }
 }

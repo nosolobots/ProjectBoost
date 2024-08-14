@@ -898,7 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 500
   rotationSpeed: 75
-  thrustSound: {fileID: 8300000, guid: 60d2cfcf1dcd8bf8f9ecb6a5adde4147, type: 3}
+  thrustSound: {fileID: 8300000, guid: b1bf054f46f8646f4a1cad8c43059c0c, type: 3}
   thrustParticlesCenter: {fileID: 5581695637120568023}
   thrustParticlesRight: {fileID: 3201156270371985064}
   thrustParticlesLeft: {fileID: 7392490926284114915}
@@ -915,8 +915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoadDelay: 2
-  crashSound: {fileID: 8300000, guid: 1dbfe91816881a141862d08e9b6a0615, type: 3}
-  finishSound: {fileID: 8300000, guid: 73f96572c39f9fa6c81e34be337c24fb, type: 3}
+  crashSound: {fileID: 8300000, guid: e298a13a112459795a8c75642305c071, type: 3}
+  finishSound: {fileID: 8300000, guid: 408f8206adbb09d5da04875a0391080d, type: 3}
   crashParticles: {fileID: 7993707860944460410}
   successParticles: {fileID: 3391528605071699503}
 --- !u!114 &6893667154419022599

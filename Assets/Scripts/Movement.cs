@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -13,11 +14,12 @@ public class Movement : MonoBehaviour
 
     Rigidbody rb;
     AudioSource audioSource;
-    
+    PlayerInput playerInput;
     void Start()
     {
         rb = GetComponent<Rigidbody>();    
         audioSource = GetComponent<AudioSource>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -28,6 +30,23 @@ public class Movement : MonoBehaviour
 
     private void Rotation()
     {
+        var rleft = playerInput.actions["RLeft"];
+        var rright = playerInput.actions["RRight"];
+        var move = playerInput.actions["Move"].ReadValue<Vector2>();
+        
+        if (rleft.IsPressed() || move.x < 0)
+        {
+            RotateLeft();
+        }
+        else if (rright.IsPressed() || move.x > 0)
+        {
+            RotateRight();
+        }
+        else
+        {
+            StopRotation();
+        }
+        /*
         if (Input.GetKey(KeyCode.A))
         {
             RotateLeft();
@@ -40,6 +59,7 @@ public class Movement : MonoBehaviour
         {
             StopRotation();
         }
+        */
     }
 
     private void RotateLeft()
@@ -77,6 +97,17 @@ public class Movement : MonoBehaviour
 
     private void Thrust()
     {
+        var thrust = playerInput.actions["Thrust"];
+        if (thrust.IsPressed())
+        {
+            StartThrusting();
+        }
+        else
+        {
+            StopThrusting();
+        }
+
+        /*
         if (Input.GetKey(KeyCode.Space))
         {
             StartThrusting();
@@ -85,8 +116,9 @@ public class Movement : MonoBehaviour
         {
             StopThrusting();
         }
+        */
     }
-
+    
     private void StartThrusting()
     {
         if (!audioSource.isPlaying)

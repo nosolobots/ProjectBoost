@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.InputSystem;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] private float levelLoadDelay;
@@ -20,7 +20,7 @@ public class CollisionHandler : MonoBehaviour
 
     void Update()
     {
-        RespondToDebugKeys();
+        //RespondToDebugKeys();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -99,6 +99,25 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    public void DebugCollisionDisabled(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Toggling collision disabled");
+            collisionDisabled = !collisionDisabled;
+        }
+    }
+
+    public void DebugLoadNextLevel(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Loading next level");
+            NextLevel();
+        }
+    }
+    
+    /*
     void RespondToDebugKeys()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -110,5 +129,6 @@ public class CollisionHandler : MonoBehaviour
             collisionDisabled = !collisionDisabled;
         }
     }
+    */
 }
 

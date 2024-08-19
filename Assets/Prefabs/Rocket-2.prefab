@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 3029266955300943074}
   - component: {fileID: 6597571758455705438}
   - component: {fileID: 6893667154419022599}
+  - component: {fileID: 5329059385112655524}
   m_Layer: 0
   m_Name: Rocket-2
   m_TagString: Untagged
@@ -931,6 +932,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4164143b3fbf111dbbfe2344f3a30db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5329059385112655524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441850154142309187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 5ea6e89b05ccc277ca4b6e9cd97689b8, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3d72fd3c-2f71-4e76-afe5-dbfdc402dd4b
+    m_ActionName: Player/Thrust[/Keyboard/ctrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 745da475-8200-41d7-9812-a3e9687c723b
+    m_ActionName: Player/RLeft[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f5258562-aa09-46bc-9ca1-540c71a883cb
+    m_ActionName: Player/RRight[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6893667154419022599}
+        m_TargetAssemblyTypeName: QuitApplication, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 458eb33d-fc16-4fa4-bdcc-6d55118d7b29
+    m_ActionName: Player/End[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6597571758455705438}
+        m_TargetAssemblyTypeName: CollisionHandler, Assembly-CSharp
+        m_MethodName: DebugLoadNextLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3c7f5a60-2874-4118-abb0-05444f0233ae
+    m_ActionName: Player/DebugNextLevel[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6597571758455705438}
+        m_TargetAssemblyTypeName: CollisionHandler, Assembly-CSharp
+        m_MethodName: DebugCollisionDisabled
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6943c193-9d41-4e35-961e-76c9df7ab99d
+    m_ActionName: Player/DebugCollision[/Keyboard/c]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &3955587162408264447
 GameObject:
   m_ObjectHideFlags: 0
